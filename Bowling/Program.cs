@@ -8,26 +8,19 @@ namespace Bowling
         static void Main(string[] args)
         {
             Bowling game = new Bowling();
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+            game.roll(10);
+
+
+
 
             Console.WriteLine(game.score());
 

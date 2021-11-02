@@ -9,29 +9,7 @@ namespace Bowling
         {
             Bowling game = new Bowling();
             game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-            game.roll(9);
-            game.roll(1);
-
-
-
-
+           
             Console.WriteLine(game.score());
 
         }

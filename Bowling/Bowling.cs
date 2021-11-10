@@ -9,9 +9,7 @@ namespace Bowling
     public class Bowling
     {
         int totalScore = 0;
-        int nextRoll = 0;
         int lastRoll = 0;
-        int secondNextRoll = 0;
         int frame = 0;
         int nubRolls = 0;
         bool strike = false;
@@ -82,22 +80,28 @@ namespace Bowling
         {
             if (frame == 10 && spare)
             {
-                //Console.Write("You have spare in the last frame. Roll one more time: ");
-                //int extraSpareScore = Convert.ToInt32(Console.ReadLine());
-                //totalScore += extraSpareScore;
-                totalScore += pins;
+               // Comment to make test
+               Console.Write("You have spare in the last frame. Roll one more time: ");
+               int extraSpareScore = Convert.ToInt32(Console.ReadLine());
+               totalScore += extraSpareScore;
+
+               // Uncomment to make test
+               // totalScore += pins;
             }
             else if ((frame == 10 && strike))
             {
-                //Console.Write("You have strike in the last frame. You have two extra rolls: ");
-                //int extraStrikeScore1 = Convert.ToInt32(Console.ReadLine());
-                //int extraStrikeScore2 = Convert.ToInt32(Console.ReadLine());
-                //totalScore += extraStrikeScore1 + extraStrikeScore2;
-                totalScore += pins;
-                totalScore += pins;
-             
+                // Comment to make test
+                Console.Write("You have strike in the last frame. You have two extra rolls: ");
+                int extraStrikeScore1 = Convert.ToInt32(Console.ReadLine());
+                int extraStrikeScore2 = Convert.ToInt32(Console.ReadLine());
+                totalScore += extraStrikeScore1 + extraStrikeScore2;
+
+                // Uncomment to make test
+                // totalScore += pins;
+                // totalScore += pins;
+
             }
-            
+
         }
         
     }

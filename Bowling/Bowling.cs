@@ -37,18 +37,11 @@ namespace Bowling
                         totalScore += pins;
                     }
 
-                    // Check of activate bonus points for second strike
+                    // Check of add points for second strike
                     if (((strike && oneBeforeLast == 10 && nubRolls != 2)) && frame <=10)
                     {
                         totalScore += pins;
                     }
-                    // Add points from second active strike
-                    //if (strike && secondStrike)
-                    //{
-                        //totalScore += pins;
-
-                        //secondStrike = false;
-                    //}
 
                     // Stop add bonus points for a strike
                     if (strike && lastRoll != 10)

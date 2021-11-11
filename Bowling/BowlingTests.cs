@@ -111,7 +111,67 @@ namespace Bowling
 
             // Assert
             Assert.Equal(expected, actual);
-
         }
+        public void RandomGameWithSpares()
+        {
+            Bowling game = new Bowling();
+
+            // Arrange
+            int expected = 56;
+
+            //Act
+            List<int> numbers = new List<int>() { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 1, 1, 1, 1, 1, 1, 1, 1 };
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                game.roll(numbers[i]);
+            }
+
+            int actual = game.score();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        public void RandomGameWithStrikes()
+        {
+            Bowling game = new Bowling();
+
+            // Arrange
+            int expected = 79;
+
+            //Act
+            List<int> numbers = new List<int>() { 10, 1, 1, 10, 1, 1, 10, 1, 1, 10, 10, 1, 1, 1, 1 };
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                game.roll(numbers[i]);
+            }
+
+            int actual = game.score();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        public void RandomGame()
+        {
+            Bowling game = new Bowling();
+
+            // Arrange
+            int expected = 79;
+
+            //Act
+            List<int> numbers = new List<int>() { 10, 1, 7, 2, 8, 1, 9, 1, 3, 10, 3, 2, 7, 1, 4, 1, 3, 3 };
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                game.roll(numbers[i]);
+            }
+
+            int actual = game.score();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+
     }
 }

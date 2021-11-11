@@ -16,103 +16,90 @@ namespace Bowling
         bool strike = false;
         bool spare = false;
         bool secondStrike = false;
+        bool game = true;
 
         public void roll(int pins)
         {
-            totalScore += pins;
-            nubRolls++;
+            if (game)
             {
-                if (spare)
+                totalScore += pins;
+                nubRolls++;
                 {
-                    totalScore += pins;
-                    spare = false;
+                    // Add bonus poinst from spare
+                    if (spare && frame < 10)
+                    {
+                        totalScore += pins;
+                        spare = false;
+                    }
+                    // Add bonus points from strike
+                    if (strike && frame < 10)
+                    {
+                        totalScore += pins;
+                    }
+
+                    // Check of activate bonus points for second strike
+                    if (((strike && oneBeforeLast == 10 && nubRolls != 2)) && frame <=10)
+                    {
+                        totalScore += pins;
+                    }
+                    // Add points from second active strike
+                    //if (strike && secondStrike)
+                    //{
+                        //totalScore += pins;
+
+                        //secondStrike = false;
+                    //}
+
+                    // Stop add bonus points for a strike
+                    if (strike && lastRoll != 10)
+                    {
+                        strike = false;
+                    }
+
+                    // Activate strike bonus
+                    if (pins == 10 && nubRolls == 1)
+                    {
+                        strike = true;
+                        frame++;
+                        nubRolls = 0;
+                    }
+                    // Add points if sum of rols in one frame is smaller than 10
+                    else if (nubRolls == 2 && pins + lastRoll < 10)
+                    {
+                        nubRolls = 0;
+                        strike = false;
+                        frame++;
+                    }
+                    // Activate spare
+                    else if (nubRolls == 2 && pins + lastRoll == 10)
+                    {
+                        spare = true;
+                        nubRolls = 0;
+                        frame++;
+                    }
                 }
 
-                if (strike)
-                {
-                    totalScore += pins;
-                }
+                oneBeforeLast = lastRoll;
+                lastRoll = pins;
 
-                if (strike && oneBeforeLast == 10 && nubRolls != 2)
+                // End a game if is not posible to make 11 or 12 rol
+                if ( frame == 10 && (!strike && !spare))
+                    {
+                       game = false;
+                    } 
+                else if (frame == 11 && !strike)
                 {
-                    secondStrike = true;
+                    game = false;
                 }
-
-                if (strike && secondStrike)
+                else if (frame == 12)
                 {
-                    totalScore += pins;
-
-                    secondStrike = false;
+                    game = false;
                 }
-
-                if (strike && lastRoll != 10)
-                {
-                    strike = false;
-                }
-                
-
-                if (pins == 10 && nubRolls == 1)
-                {
-                    strike = true;
-                    frame++;
-                    nubRolls = 0;
-                }
-                else if (nubRolls == 2 && pins + lastRoll < 10)
-                {
-                    nubRolls = 0;
-                    strike = false;
-                    frame++;
-                }
-                else if (nubRolls == 2 && pins + lastRoll == 10)
-                {
-                    spare = true;
-                    nubRolls = 0;
-                    frame++;
-                }
-
-                // For extra 20 points in the first frame (if 3 strikes in a row)
-                //if (frame == 3 && pins == 10 && totalScore == 50)
-                //{
-                  //totalScore += 20;
-                //}
-
             }
-            oneBeforeLast = lastRoll;
-            lastRoll = pins;
-            tenFrame(pins);
-
         }
         public int score()
         {
             return totalScore;
-        }
-
-        public void tenFrame(int pins)
-        {
-            if (frame == 10 && spare)
-            {
-               // Comment to make test
-               //Console.Write("You have spare in the last frame. Roll one more time: ");
-               //int extraSpareScore = Convert.ToInt32(Console.ReadLine());
-               //totalScore += extraSpareScore;
-
-               // Uncomment to make test
-               totalScore += pins;
-            }
-            else if ((frame == 10 && strike))
-            {
-                // Comment to make test
-                //Console.Write("You have strike in the last frame. You have two extra rolls: ");
-               // int extraStrikeScore1 = Convert.ToInt32(Console.ReadLine());
-                //int extraStrikeScore2 = Convert.ToInt32(Console.ReadLine());
-                //totalScore += extraStrikeScore1 + extraStrikeScore2;
-
-                // Uncomment to make test
-                totalScore += pins;
-                totalScore += pins;
-
-            }
-
         }
         
     }
